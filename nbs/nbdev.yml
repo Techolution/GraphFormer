@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "GraphFormer"
+  site-url: "https://Techolution.github.io/GraphFormer"
+  description: "GraphFormer"
+  repo-branch: main
+  repo-url: "https://github.com/Techolution/GraphFormer"
