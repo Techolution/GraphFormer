@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "GraphFormer",
+    "section": "",
+    "text": "GraphFormer is a work in progess…",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "GraphFormer",
+    "section": "Introduction",
+    "text": "Introduction\nIn this blog post we present a novel hybrid architecture that combines Graph Neural Networks (GNNs) and Transformers to process and analyze complex relational data. This architecture is designed to capture both the intricate network structure of interconnected entities and rich feature sets with individual data points. By leveraging PyTorch Geometric for graph-based learning and PyTorch’s Transformer implementation for sequence modeling, our approach offers a flexible and powerful framework for a wide range of applications involving graph structured relational data.",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#architecture-overview",
+    "href": "index.html#architecture-overview",
+    "title": "GraphFormer",
+    "section": "Architecture Overview",
+    "text": "Architecture Overview\nThe proposed architecture integrates Graph Neural Networks (GNNs) and Transformers to effectively process and analyze complex relational data. The GNN component, implemented using PyTorch Geometric, serves as the foundation for modeling entity relationships. It employs multiple Graph Convolutional Network (GCN) layers to learn entity embeddings, effectively capturing complex interdependencies and structural information inherent in the data. This approach allows for a compact yet comprehensive representation of intricate entity networks.\n\n\n\nGraph Structur\n\n\nFigure 1: Representation of Graph-Structured Data as Input to the Hybrid GNN-Transformer Architecture\nIn conjunction with the GNN, we introduce a novel “TransformerEncoderForEntitiesAndFeatures” model. This bespoke Transformer-based component is engineered to amalgamate the learned entity embeddings with supplementary feature sets. The integration facilitates a nuanced matching between entities and external factors, thereby enhancing the model’s contextual understanding and analytical capabilities.\n\n\n\nGNN Component\n\n\nFigure 2: GNN Component of the Hybrid Architecture\n\n\n\nTransformer Component\n\n\nFigure 3: Transformer Component of the Hybrid Architecture",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#key-innovations",
+    "href": "index.html#key-innovations",
+    "title": "GraphFormer",
+    "section": "Key Innovations",
+    "text": "Key Innovations\nThe primary innovation of this architecture lies in its dual representation learning capability. The GNN component extracts entity embeddings based on relational structure, while the Transformer integrates these embeddings with additional features. This approach yields rich, context-aware representations that encapsulate both the inherent structure of the data and the nuanced characteristics of individual entities. Moreover, the architecture leverages the Transformer’s attention mechanism to enable flexible entity-feature matching. This mechanism dynamically weights various aspects of entities and features contingent on the context, allowing for a more sophisticated and adaptive analysis. Such flexibility is desirable when dealing with complex, real-world data where the significance of different factors may vary depending on the specific context. Lastly, the architecture demonstrates scalability to large, complex datasets. It is designed to handle a substantial number of entities and intricate relationship structures, making it particularly suitable for real-world applications involving extensive relational data. This scalability ensures the viability of our approach even as datasets grow in size and complexity, addressing a common challenge in domains dealing with relational data at scale.",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#details-case-study",
+    "href": "index.html#details-case-study",
+    "title": "GraphFormer",
+    "section": "Details & Case Study",
+    "text": "Details & Case Study\n\nAuthor’s Note\nThis case study is a simple demonstration of a possible use case for this architecture. The broader strokes are detailed below, but to follow along and experiment yourself, feel free to reference this GitHub Repository: https://github.com/ethanshenley/Hybrid-GNN-Transformer-Example",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#the-datasets",
+    "href": "index.html#the-datasets",
+    "title": "GraphFormer",
+    "section": "The Datasets",
+    "text": "The Datasets\nTo demonstrate the efficacy of our architecture, we present its application in NextGenEd, a personalized course recommendation system for educational institutions. In this context, courses serve as entities (nodes) in the graph, with prerequisites and corequisites forming the relationships (edges). Student characteristics and preferences are incorporated as additional features.\nWe used two data sets to demonstrate the use of this hybrid architecture. We generated a pseudo course-catalog with 100 courses to mimic the structure typically found in university curricula. This dataset comprises mixed data types, encompassing both semantic and relational information. The semantic information was used to construct the nodes, while the relational information was used to construct the edges.\nCRN,Code,Title,Department,Credits,Description,Level,Prerequisites,Corequisites,Topics,Required for Majors,Learning Outcomes,Average GPA,Typical Semesters Offered,Difficulty Rating,Workload Hours/Week,Typical Class Size,Online Offering Available\nFigure 4: Dataset Schema for the Course Catalog including semantic and relational information.\n69254,MATH656,\"\"\"Advanced Topics in Algebraic Geometry\"\"\",MATH,4.0,\"This course delves into advanced topics in algebraic geometry, covering concepts such as schemes, cohomology, and intersection theory. Students will explore modern developments in the field and engage with challenging problems to deepen their understanding of algebraic structures and geometric properties.\",600,MATH159|MATH154,,\"1. Algebra\n2. Calculus\n3. Geometry\n4. Probability and Statistics\n5. Number Theory\",HIST Major,\"1. Solve algebraic equations and inequalities using appropriate techniques and strategies|\n2. Apply principles of calculus to analyze and solve mathematical problems in various contexts|\n3. Demonstrate an understanding of geometric concepts and their applications in real-world situations|\n4. Analyze and interpret data using probability and statistical methods|\n5. Explore and apply number theory concepts to solve mathematical problems efficiently.\",2.863217500832427,Summer|Spring|Fall,4.12909614744286,12.020213472438389,52,False\nFigure 5: Example Course from our Course Catalog\nTo simulate the diverse characteristics of a student population, we generated a dataset of 100 student profiles. This dataset serves to demonstrate the integration of supplementary feature sets in generating personalized recommendations. The student dataset schema (Figure 6) showcases the heterogeneous nature of student data, incorporating both categorical and continuous variables, thereby testing the architecture’s capacity to process and integrate diverse data types.\nStudent ID,Name,Date of Birth,Entry Date,Expected Graduation,Major,Minor,GPA,Total Credits,Academic Standing,Gender,Ethnicity,First Generation College,High School GPA,SAT Score,ACT Score,Current Courses,Academic Plan,Study Abroad Experience,Internship Experience,Research Experience,Extracurricular Activities,Attendance Rate,Assignment Completion Rate,Preferred Learning Style,Career Goals,Tutoring Sessions,Academic Coaching Sessions,Average Study Hours/Week,Work Hours/Week\nFigure 6: Dataset Schema for the Student Dataset\nS548323,Sophia Rodriguez,1999-11-07,2024-08-01,2028-05-15,HIST,,2.46,85,Good Standing,Male,True,3.06,,,65260|13043|51212,64891|75519|17292|80475|33652|82386|41090|13039|63396|90434,False,False,False,,0.8341785355410825,0.9285145448540364,Auditory,\"1. To become a software engineer at a top technology company\n2. To pursue a career in marketing and eventually become a brand manager\n3. To work in public health and contribute to improving healthcare access for underserved communities\",8,4,21.914441233047334,7.836155882407471\nFigure 6: Example Student from the Student Dataset\nBy employing these two interconnected datasets, we aim to evaluate the architecture’s ability to effectively model complex course relationships via the GNN component and integrate diverse student attributes via the Transformer component. This experimental setup allows us to assess the architecture’s performance in a somewhat-realistic educational context.",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#model-architecture",
+    "href": "index.html#model-architecture",
+    "title": "GraphFormer",
+    "section": "Model Architecture",
+    "text": "Model Architecture\nThe GNN component for modeling course relationships is implemented as follows:\n\nimport torch\nclass CourseGNN(torch.nn.Module):\n    def __init__(self, num_features, hidden_channels, num_classes):\n        super(CourseGNN, self).__init__()\n        self.conv1 = GCNConv(num_features, hidden_channels)\n        self.conv2 = GCNConv(hidden_channels, hidden_channels)\n        self.conv3 = GCNConv(hidden_channels, num_classes)\n\n\n    def forward(self, x, edge_index):\n        x = F.relu(self.conv1(x, edge_index))\n        x = F.relu(self.conv2(x, edge_index))\n        x = self.conv3(x, edge_index)\n        return x\n\n\n---------------------------------------------------------------------------\nModuleNotFoundError                       Traceback (most recent call last)\nCell In[1], line 1\n----&gt; 1 import torch\n      2 class CourseGNN(torch.nn.Module):\n      3     def __init__(self, num_features, hidden_channels, num_classes):\n\nModuleNotFoundError: No module named 'torch'\n\n\n\nThe Transformer-based component for student-course matching is implemented as:\n\n# Create Positional Encoder\nclass PositionalEncoding(nn.Module):\n    def __init__(self, d_model, max_len=5000):\n        super().__init__()\n        position = torch.arange(max_len).unsqueeze(1)\n        div_term = torch.exp(torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model))\n        pe = torch.zeros(max_len, 1, d_model)\n        pe[:, 0, 0::2] = torch.sin(position * div_term)\n        pe[:, 0, 1::2] = torch.cos(position * div_term)\n        self.register_buffer('pe', pe)\n\n\n    def forward(self, x):\n        return x + self.pe[:x.size(0)]\n\n\nclass TransformerEncoderForStudentAndCourses(nn.Module):\n    def __init__(self, input_dim, d_model, nhead, num_layers, dropout=0.1):\n        super().__init__()\n        self.input_projection = nn.Linear(input_dim, d_model)\n        self.pos_encoder = PositionalEncoding(d_model)\n        encoder_layers = nn.TransformerEncoderLayer(d_model, nhead, dim_feedforward=4*d_model, dropout=dropout)\n        self.transformer_encoder = nn.TransformerEncoder(encoder_layers, num_layers)\n        self.output_projection = nn.Linear(d_model, d_model)\n        self.layer_norm = nn.LayerNorm(d_model)\n\n\n    def forward(self, src):\n        src = self.input_projection(src)\n        src = self.pos_encoder(src)\n        output = self.transformer_encoder(src)\n        output = self.output_projection(output)\n        return self.layer_norm(output)\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[2], line 2\n      1 # Create Positional Encoder\n----&gt; 2 class PositionalEncoding(nn.Module):\n      3     def __init__(self, d_model, max_len=5000):\n      4         super().__init__()\n\nNameError: name 'nn' is not defined\n\n\n\nBelow is the training loop used to create the contextualized embeddings:\n\ninput_dim = X_student_tensor.shape[1] + embeddings.shape[1]\nd_model = 256  #  you can adjust this to whatever fits your data best\nnhead = 8  # Number of attention heads\nnum_layers = 3  # Number of transformer layers\ntransformer_encoder = TransformerEncoderForStudentAndCourses(input_dim, d_model, nhead, num_layers)\n\n\ndef train_transformer_encoder():\n    optimizer = torch.optim.Adam(transformer_encoder.parameters(), lr=0.001)\n    criterion = nn.MSELoss()\n   \n    num_epochs = 100\n    for epoch in range(num_epochs):\n        total_loss = 0\n        for i, student in enumerate(X_student_tensor):\n            try:\n                # Get current courses for the student\n                current_courses = student_data.iloc[i]['Current Courses'].split('|')\n               \n                # Get average embedding of current courses\n                course_indices = [course_catalog_df[course_catalog_df['Code'] == course].index[0]\n                                  for course in current_courses\n                                  if course in course_catalog_df['Code'].values]\n                if not course_indices:\n                    continue\n                target_embedding = embeddings[course_indices].mean(dim=0)\n               \n                # Forward pass\n                combined_encoding = get_student_and_course_encoding(student, target_embedding)\n                loss = criterion(combined_encoding.squeeze(), target_embedding)\n               \n                # Backward pass and optimize\n                optimizer.zero_grad()\n                loss.backward()\n                optimizer.step()\n                total_loss += loss.item()\n            except Exception as e:\n                print(f\"Error processing student {i}: {str(e)}\")\n                continue\n       \n        if (epoch + 1) % 10 == 0:\n            print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {total_loss:.4f}')\n\n\n---------------------------------------------------------------------------\nNameError                                 Traceback (most recent call last)\nCell In[4], line 1\n----&gt; 1 input_dim = X_student_tensor.shape[1] + embeddings.shape[1]\n      2 d_model = 256  #  you can adjust this to whatever fits your data best\n      3 nhead = 8  # Number of attention heads\n\nNameError: name 'X_student_tensor' is not defined",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#case-study-results",
+    "href": "index.html#case-study-results",
+    "title": "GraphFormer",
+    "section": "Case Study Results:",
+    "text": "Case Study Results:\nIn the NextGenEd case study, our architecture demonstrated superior performance in generating personalized course recommendations compared to traditional methods. The system successfully captured complex course interdependencies while accounting for individual student characteristics, leading to more relevant and contextualized recommendations.\nA key feature of this recommendation system is the approach to calculating similarity scores. The base similarity is derived from the cosine similarity between the combined encodings of the student features and course embeddings. The function also implements several filters to refine recommendations, such as excluding courses the student has already taken or planned, courses that are too difficult based on the student’s GPA, and courses for which the student doesn’t meet the prerequisites. This approach to similarity scores results in recommendations that are not only relevant to the student’s academic profile but also balanced and practical. In most use cases, a similar function will be required to filter recommendations based on relevant criteria.\nTo demonstrate this system, we used a sample student from our Student Dataset to generate recommendations:\n\nstudent_id = 'S631127'\nrecommended_courses = recommend_courses_for_student(student_id)\nprint(f\"\\nRecommended courses for student {student_id}:\")\nfor course in recommended_courses:\n    print(f\"{course['Code']} - {course['Title']} (Similarity: {course['Similarity']:.4f})\")\n\nThe selected student profile (ID: S631127) represents a Biology major with diverse interests spanning tech entrepreneurship, medicine, and environmental conservation. The generated student profile is below.\nS631127,Emily Johnson,2002-03-06,2022-08-01,2026-05-15,BIO,,3.25,15,Academic Probation,Female,African American,False,2.95,,,32970|55791|64748|49740,47591|78068|13855|64891|44708|16098|65260,False,True,True,Activity:Member|Activity:Member,0.8048748714448314,0.6242695622011141,Reading/Writing,\"1. To become a successful tech entrepreneur and start their own business.\n2. To pursue a career in healthcare and become a doctor or nurse.\n3. To work in the field of environmental conservation and contribute to sustainability efforts.\",10,3,16.087472018949384,18.525877782533964\nFor this student, the system generated the following course recommendations:\nRecommended courses for student S631127:\nBIO218 - \"Ecology and Conservation Biology\" (Similarity: 1.1000)\nBIO159 - \"Introduction to Cellular Biology\" (Similarity: 1.1000)\nCS111 - \"Introduction to Computer Science Fundamentals\" (Similarity: 1.0000)\nCS262 - \"Web Development Fundamentals\" (Similarity: 1.0000)\nPHYS100 - \"Principles of Physics: Mechanics and Motion\" (Similarity: 1.0000)\nThese recommendations demonstrate the system’s ability to synthesize information from the student’s academic history, major requirements, and personal interests to generate a diverse and relevant set of course suggestions. The recommendations span the student’s primary field of study (Biology) while also incorporating courses aligned with their expressed interest in technology (Computer Science courses). The GNN component effectively learned course embeddings that encoded not only individual course attributes but also their positions within the broader curriculum. This allowed for a more nuanced understanding of course relationships beyond simple prerequisites. The Transformer component, by integrating these course embeddings with student features, enabled highly personalized recommendations. It demonstrated an ability to dynamically adjust the importance of different factors based on the specific student-course pairing, leading to recommendations that were both academically sound and tailored to individual student needs and preferences.",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#broader-applications",
+    "href": "index.html#broader-applications",
+    "title": "GraphFormer",
+    "section": "Broader Applications",
+    "text": "Broader Applications\nWhile our case study demonstrates the effectiveness of this hybrid GNN-Transformer architecture in an educational context, its potential extends far beyond course recommendations. The architecture is particularly well-suited for domains characterized by complex relational data structures where both network topology and node/edge attributes play crucial roles. In bioinformatics, for instance, this architecture could be used in protein-protein interaction (PPI) network analysis. The GNN component could model the intricate network of protein interactions, while the Transformer could integrate additional data such as gene expression levels, subcellular localization, and functional annotations. This could potentially lead to more accurate predictions of protein functions, identification of disease-related protein complexes, or discovery of novel drug targets. Another promising application lies in financial fraud detection. Here, the GNN could model transaction networks, capturing patterns of fund flows between accounts. The Transformer could then incorporate time-series data of individual transactions, account holder information, and external factors like economic indicators. This combination could potentially enhance the ability to detect complex fraud schemes that exploit intricate networks of seemingly unrelated transactions. These are just a couple of examples that illustrate how our hybrid architecture can be adapted to various domains where understanding complex relationships within data is desired. By combining the strengths of GNNs in capturing structural information with the Transformer’s ability to process rich, multi-modal feature sets, this approach opens up new possibilities for tackling challenging problems across diverse fields.",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "index.html#conclusion",
+    "href": "index.html#conclusion",
+    "title": "GraphFormer",
+    "section": "Conclusion",
+    "text": "Conclusion\nOur hybrid GNN-Transformer architecture presents a flexible approach to modeling and analyzing complex relational data. By combining the strengths of graph-based learning and attention mechanisms, it can potentially assist with developing sophisticated, context-aware systems across a wide range of applications. The architecture’s ability to capture both structural relationships and rich feature sets, coupled with its scalability to large datasets, makes it a promising tool for tackling complex real-world problems involving relational data. As demonstrated in the NextGenEd case study, this approach can lead to more accurate and personalized recommendations, potentially improving decision-making processes in various domains. Future work could explore the architecture’s performance in other domains, investigate techniques for further improving scalability, and examine methods for incorporating temporal dynamics into the model. Additionally, research into interpretability techniques specific to this hybrid architecture could provide valuable insights into its decision-making processes, further enhancing its utility in practical applications.\nTo site this work please use:\n@software{GraphFormer,\n  author = {Henley, Ethan},\n  url = {https://github.com/Techolution/GraphFormer},\n  year = {2024}\n}",
+    "crumbs": [
+      "GraphFormer"
+    ]
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nfoo\n\n foo ()",
+    "crumbs": [
+      "core"
+    ]
+  }
+]
